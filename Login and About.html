@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Travel & Tourism</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      width: 400px;
+      margin: 100px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input[type="text"], input[type="tel"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    #otpField {
+      display: none;
+    }
+
+    
+    .about-section {
+      margin-top: 40px;
+    }
+    .accordion {
+      background-color: #f9f9f9;
+      color: #333;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      transition: 0.4s;
+    }
+    .active, .accordion:hover {
+      background-color: #ccc;
+    }
+    .panel {
+      padding: 0 18px;
+      display: none;
+      background-color: white;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login to Your Account</h2>
+    <form id="loginForm">
+      <div id="emailField">
+        <input type="text" id="email" placeholder="Enter Email">
+      </div>
+      <div id="mobileField">
+        <input type="tel" id="mobile" placeholder="Enter Mobile Number">
+      </div>
+      <div id="otpField">
+        <input type="text" id="otp" placeholder="Enter OTP">
+      </div>
+      <input type="submit" value="Get OTP" id="submitBtn">
+    </form>
+  </div>
+
+  
+  <div class="container about-section">
+    <h2>About Us</h2>
+    <button class="accordion">Who We Are</button>
+    <div class="panel">
+      <p>We are a passionate team dedicated to providing the best travel experiences for our customers.</p>
+    </div>
+
+    <button class="accordion">Our Mission</button>
+    <div class="panel">
+      <p>Our mission is to inspire and enable people to explore and discover the beauty of the world.</p>
+    </div>
+
+    <button class="accordion">Why Choose Us</button>
+    <div class="panel">
+      <p>We offer personalized service, expert guidance, and unbeatable prices to make your travel dreams a reality.</p>
+    </div>
+  </div>
+
+  <script>
+   
+    document.getElementById('submitBtn').addEventListener('click', function(event) {
+      event.preventDefault();
+      var emailField = document.getElementById('emailField');
+      var mobileField = document.getElementById('mobileField');
+      var otpField = document.getElementById('otpField');
+
+      if (document.getElementById('email').value !== '') {
+        emailField.style.display = 'none';
+        mobileField.style.display = 'none';
+        otpField.style.display = 'block';
+        
+        var otp = Math.floor(1000 + Math.random() * 9000);
+        alert('Your OTP is: ' + otp);
+      } else if (document.getElementById('mobile').value !== '') {
+        emailField.style.display = 'none';
+        mobileField.style.display = 'none';
+        otpField.style.display = 'block';
+        
+        var otp = Math.floor(1000 + Math.random() * 9000);
+        alert('Your OTP is: ' + otp);
+      } else {
+        alert('Please enter either your email or mobile number.');
+      }
+    });
+
+    
+    var accordions = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < accordions.length; i++) {
+      accordions[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
